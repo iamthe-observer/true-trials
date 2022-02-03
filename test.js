@@ -127,6 +127,6 @@ const weekDay = function() {
     };
 }();
 
-console.log(weekDay.number('Saturday'));
-
 let x = Function("n", "return n + 1")
+
+console.log(x);
