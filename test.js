@@ -13,6 +13,9 @@ class Vec {
     get length() {
         return this.matrix.reduce((a, b) => a + b)
     }
+    get multiply() {
+        return this.x * this.y
+    }
 }
 
 let vector = new Vec(2, 1)
@@ -127,6 +130,51 @@ const weekDay = function() {
     };
 }();
 
+// Create function from data(string)
 let x = Function("n", "return n + 1")
 
-console.log(x);
+const vector2 = new Vec(1, 12)
+
+// Promises
+let ten = Promise.resolve("10")
+    // ten.then(numb => console.log(`Number ${numb}`))
+
+const promise = new Promise((resolve, reject) => {
+    if (vector2.multiply != 0) {
+        resolve(vector2.multiply)
+    } else {
+        reject('could not compute')
+    }
+})
+
+// console.log(promise);
+
+// promise.then(x => console.log(x))
+//     .catch(e => console.log(e))
+
+const btn = document.querySelector('.btn')
+const first = document.querySelector('.first')
+const second = document.querySelector('.second')
+const third = document.querySelector('.third')
+
+
+btn.addEventListener("click", () => {
+    addColor(".first", 1000, "red")
+        .then(() => addColor(".second", 3000, 'blue'))
+        .then(() => addColor('.third', 2000, 'green'))
+        .catch(e => console.log(e))
+})
+
+function addColor(selector, time, color) {
+    const element = document.querySelector(selector)
+    return new Promise((resolve, reject) => {
+        if (element) {
+            setTimeout(() => {
+                element.style.color = color
+            }, time)
+            resolve()
+        } else {
+            reject(`there is no such DOM element: "${selector}"`)
+        }
+    })
+}
