@@ -178,3 +178,66 @@ function addColor(selector, time, color) {
         }
     })
 }
+
+// let hasMeeting = JSON.parse(prompt('true or false: meeting or not?'))
+let hasMeeting = false
+
+const meeting = new Promise((resolve, reject) => {
+    if (!hasMeeting) {
+        const meetingDetails = {
+            name: 'Ebbysgold Group',
+            location: 'Spintex Road',
+            time: '12:00 AM'
+        }
+        resolve(meetingDetails)
+    } else {
+        reject(new Error("meeting already sheduled"))
+    }
+})
+
+const addToCalendar = meetingDetails => {
+    const calendar = `${meetingDetails.name} is scehduled at ${meetingDetails.time} on ${meetingDetails.location}`
+    return Promise.resolve(calendar)
+}
+
+// meeting
+//     .then(addToCalendar)
+//     .then(x => console.log('Meeting Info:', x))
+//     .catch(e => console.log(e.message))
+
+async function myMeeting() {
+    try {
+        const meetingDetails = await meeting
+        const message = await addToCalendar(meetingDetails)
+        console.log(message)
+    } catch (e) {
+        console.log(e);
+    }
+}
+// myMeeting().catch(e => console.log(e))
+myMeeting().catch(e => console.log(e))
+
+const promise1 = Promise.resolve('Promise 1 complete')
+const promise2 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res('Promise 2 complete')
+    }, 3000)
+})
+
+// promise1
+//     .then(x => console.log(x))
+// promise2
+//     .then(x => console.log(x))
+
+// returns all promises
+// Promise.all([promise1, promise2]).then(res => console.log(res))
+
+// returns only first promise thats done
+// Promise.race([promise1, promise2]).then(res => console.log(res))
+
+// Basically pauses functions (generator function)
+// function* generatorFunc() {
+//     let data = getData()
+//     yield data;
+//     console.log(data);
+// }
