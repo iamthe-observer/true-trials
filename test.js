@@ -152,32 +152,32 @@ const promise = new Promise((resolve, reject) => {
 // promise.then(x => console.log(x))
 //     .catch(e => console.log(e))
 
-const btn = document.querySelector('.btn')
-const first = document.querySelector('.first')
-const second = document.querySelector('.second')
-const third = document.querySelector('.third')
+// const btn = document.querySelector('.btn')
+// const first = document.querySelector('.first')
+// const second = document.querySelector('.second')
+// const third = document.querySelector('.third')
 
 
-btn.addEventListener("click", () => {
-    addColor(".first", 1000, "red")
-        .then(() => addColor(".second", 3000, 'blue'))
-        .then(() => addColor('.third', 2000, 'green'))
-        .catch(e => console.log(e))
-})
+// btn.addEventListener("click", () => {
+//     addColor(".first", 1000, "red")
+//         .then(() => addColor(".second", 3000, 'blue'))
+//         .then(() => addColor('.third', 2000, 'green'))
+//         .catch(e => console.log(e))
+// })
 
-function addColor(selector, time, color) {
-    const element = document.querySelector(selector)
-    return new Promise((resolve, reject) => {
-        if (element) {
-            setTimeout(() => {
-                element.style.color = color
-            }, time)
-            resolve()
-        } else {
-            reject(`there is no such DOM element: "${selector}"`)
-        }
-    })
-}
+// function addColor(selector, time, color) {
+//     const element = document.querySelector(selector)
+//     return new Promise((resolve, reject) => {
+//         if (element) {
+//             setTimeout(() => {
+//                 element.style.color = color
+//             }, time)
+//             resolve()
+//         } else {
+//             reject(`there is no such DOM element: "${selector}"`)
+//         }
+//     })
+// }
 
 // let hasMeeting = JSON.parse(prompt('true or false: meeting or not?'))
 let hasMeeting = false
@@ -195,7 +195,7 @@ const meeting = new Promise((resolve, reject) => {
     }
 })
 
-const addToCalendar = meetingDetails => {
+const addToCalendar = (meetingDetails) => {
     const calendar = `${meetingDetails.name} is scehduled at ${meetingDetails.time} on ${meetingDetails.location}`
     return Promise.resolve(calendar)
 }
@@ -205,17 +205,17 @@ const addToCalendar = meetingDetails => {
 //     .then(x => console.log('Meeting Info:', x))
 //     .catch(e => console.log(e.message))
 
-async function myMeeting() {
-    try {
-        const meetingDetails = await meeting
-        const message = await addToCalendar(meetingDetails)
-        console.log(message)
-    } catch (e) {
-        console.log(e);
-    }
-}
+// async function myMeeting() {
+//     try {
+//         const meetingDetails = await meeting
+//         const message = await addToCalendar(meetingDetails)
+//         console.log(message)
+//     } catch (e) {
+//         console.log(e);
+//     }
+// }
 // myMeeting().catch(e => console.log(e))
-myMeeting().catch(e => console.log(e))
+// myMeeting().catch(e => console.log(e))
 
 const promise1 = Promise.resolve('Promise 1 complete')
 const promise2 = new Promise((res, rej) => {
